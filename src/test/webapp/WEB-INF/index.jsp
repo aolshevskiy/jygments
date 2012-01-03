@@ -1,0 +1,10 @@
+<html>
+<head>
+	<style>
+		${actionBean.styleDefs}
+	</style>
+</head>
+<body>
+${actionBean.content}
+</body>
+</html>
