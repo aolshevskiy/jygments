@@ -1,13 +1,10 @@
 package jygments;
 
-import org.python.core.*;
+import org.python.core.PyFunction;
+import org.python.core.PyString;
 import org.python.util.PythonInterpreter;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-public class Jygments {
+final public class Jygments {
 	private final PythonInterpreter i = new PythonInterpreter();
 	{
 		i.exec("import sys");
@@ -19,8 +16,8 @@ public class Jygments {
 	public Lexer newLexer(String name) {
 		return new Lexer(i.get("get_lexer_by_name").__call__(new PyString(name)));
 	}
-	public HtmlFormatter newHtmlFormatter(String params) {				
-		return new HtmlFormatter(i.eval("HtmlFormatter("+params+")"));
+	public HtmlFormatter newHtmlFormatter(String params) {
+		return new HtmlFormatter(i.eval("HtmlFormatter(" + params + ")"));
 	}
 	
 	public String highlight(String code, Lexer lexer, Formatter formatter) {
